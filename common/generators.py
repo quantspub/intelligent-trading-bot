@@ -90,7 +90,7 @@ def generate_feature_set(df: pd.DataFrame, fs: dict, config: dict, model_store: 
             raise ValueError(f"Unknown feature generator name or name cannot be resolved: {generator}")
 
         # Call this function
-        f_df, features = generator_fn(f_df, gen_config, config, model_store)
+        f_df, features = generator_fn(f_df, gen_config, config, model_store, last_rows=last_rows)
 
     #
     # Add generated features to the main data frame with all other columns and features
