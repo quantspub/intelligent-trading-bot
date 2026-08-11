@@ -29,6 +29,8 @@ async def send_diagram(df, model: dict, config: dict, model_store: ModelStore):
     freq = config.get("freq")
     time_column = config["time_column"]
 
+    df = df.copy()  # Since the dataframe can be changed in-place in this function
+
     # Ensure that timestamp is in index. It is needed for visualization
     if not ptypes.is_datetime64_any_dtype(df.index):  # Alternatively df.index.inferred_type == "datetime64"
         if time_column in df.columns:
@@ -98,6 +100,7 @@ async def send_diagram(df, model: dict, config: dict, model_store: ModelStore):
         else:
             transactions_exist = False
             df_t = None
+            df = df_ohlc
 
     symbol = config["symbol"]
     title = f"$\\bf{{{symbol}}}$"

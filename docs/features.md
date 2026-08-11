@@ -131,7 +131,7 @@ Here is an example of a custom feature definition:
 
 This function can be implemented as follows:
 ```python
-def my_feature_example(df, config: dict, global_config: dict, model_store: ModelStore):
+def my_feature_example(df, config: dict, global_config: dict, model_store: ModelStore, last_rows: int = 0):
     # Parse feature config. See source code for details
     if function == 'add':
         df[names] = df[column_name] + parameter
